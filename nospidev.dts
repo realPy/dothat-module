@@ -1,0 +1,26 @@
+/*
+ * Device Tree overlay for disable spidev
+ *
+ */
+
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
+    /* disable spi-dev for spi0.0 & spi0.1 */
+    fragment@0 {
+	target = <&spi0>;
+	__overlay__ {
+		status = "okay";
+
+		spidev@0{
+			status = "disabled";
+		};
+		spidev@1{
+			status = "disabled";
+		};
+	};
+    };
+};
+
