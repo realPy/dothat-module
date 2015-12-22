@@ -35,6 +35,13 @@ Then
 	make
 	insmod dothat.ko
 	
+Compile the client:
+Replace the "tun0" reference in the ioclient.c source by the interface of your choice (eth0 for example)
+Compile with
+
+	gcc -o ioclient ioclient.c -lm
+
+Run and push the button :)
 
 ##Control with sysfs:
 The driver can be controlled by sysfs.
