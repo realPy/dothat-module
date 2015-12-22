@@ -21,8 +21,16 @@ You need the source of your kernel and the spidev need to be disable. The spidev
 
 
 ##How compile:
-Just clone and make
-	git clone 
+You can update with the rpi-update
+
+	sudo rpi-update
+	
+Install or update your source kernel by the method provide here:
+https://github.com/notro/rpi-source/wiki
+
+Then
+
+	git clone https://github.com/realPy/dothat-module.git
 	cd dothat-module
 	make
 	insmod dothat.ko
