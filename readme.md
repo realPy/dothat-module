@@ -20,7 +20,7 @@ You need the source of your kernel and the spidev need to be disable. The spidev
 	dtoverlay=nospidev
 
 
-##How compile:
+##How to compile:
 You can update with the rpi-update
 
 	sudo rpi-update
@@ -37,11 +37,12 @@ Then
 	
 Compile the client:
 Replace the "tun0" reference in the ioclient.c source by the interface of your choice (eth0 for example)
-Compile with
+Compile with:
 
 	gcc -o ioclient ioclient.c -lm
 
 Run and push the button :)
+
 
 ##Control with sysfs:
 The driver can be controlled by sysfs.
@@ -183,5 +184,8 @@ The touch sensors is recognized like a classic unix keyboard at /dev/input/by-pa
 See the C example ioclient.c to handle.
 This example show the Bandwidth of a VPN tun interface in real time.
 
-	
+### FAQ
+####Why the rainbox effect is in the client code and directly hardcoded in the driver?
+To calculate a rainbow effect we use the HSV color transformation. This require floating point. Linus not recommanded to use floating point in kernel module and I'm agree.
+
 
