@@ -38,7 +38,7 @@ sprintf(v,"%02X%02X%02X",blue, green, red);
 sn3218_lcd_set(led, v);
 }
 
-void backlight_array(int LED[6][3])
+void backlight_array(int LED[5][2])
 {
 char v[60], vt[10];
 int i,j;
@@ -47,7 +47,7 @@ v[0]='\0';
 
 for (i=0; i<=5 ; i++)
 {
-	sprintf(vt,"%02X%02X%02X",LED[i][0],LED[i][1],LED[i][2]);
+	sprintf(vt,"%02X%02X%02X",LED[i][2],LED[i][1],LED[i][0]);
 	strncat(v,vt,6);
 }
 
@@ -92,4 +92,18 @@ st7036_cursor_position(c,r);
 void lcd_text(char *s)
 {
 st7036_lcd_buffer(s);
+}
+
+void lcd_text_line(int line, char *s)
+{
+char st[16];
+int r;
+
+strncpy(st,s,16);
+
+r=line % 3;
+
+st7036_cursor_position(0,r);
+st7036_lcd_buffer(st);
+
 }
