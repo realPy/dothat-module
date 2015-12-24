@@ -1,1 +1,0 @@
-cmd_/home/pete/dothat-module/dothat.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/pete/dothat-module/dothat.ko /home/pete/dothat-module/dothat.o /home/pete/dothat-module/dothat.mod.o
