@@ -1,6 +1,6 @@
-*** C interface for dothat kernel module
+# C interface for dothat kernel module
 
-*backlight_rgb
+## backlight_rgb
 
 Set the backlight to the RGB values
 
@@ -8,7 +8,7 @@ Set the backlight to the RGB values
 
 	0 <= R,G,B <=255
 
-*backlight_led_rgb
+## backlight_led_rgb
 
 Set individual backlight LED to RGB value
 
@@ -17,7 +17,7 @@ Set individual backlight LED to RGB value
 	0 <= LED <= 5 (0=left end, 5=right end)
 	0 <= R,G,B <=255
 
-*backlight_array
+## backlight_array
 
 Set all the individual backlight LEDs to specific values in one go.
 
