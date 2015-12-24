@@ -1,5 +1,12 @@
 # C interface for dothat kernel module
 
+Run make to generate 'libdothat.a'.  Compile a program with 
+
+	cc -o test test.c -L. -ldothat
+
+Only the dothat.h header file is needed for the higher level C routines below.
+
+
 ## backlight_rgb
 
 Set the backlight to the RGB values
