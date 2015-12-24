@@ -107,3 +107,23 @@ st7036_cursor_position(0,r);
 st7036_lcd_buffer(st);
 
 }
+
+void lcd_text_lines(char *s1, char *s2, char *s3)
+{
+char st[16];
+
+st7036_clear();
+
+strncpy(st,s1,16);
+st7036_cursor_position(0,0);
+st7036_lcd_buffer(st);
+
+strncpy(st,s2,16);
+st7036_cursor_position(0,1);
+st7036_lcd_buffer(st);
+
+strncpy(st,s3,16);
+st7036_cursor_position(0,2);
+st7036_lcd_buffer(st);
+
+}

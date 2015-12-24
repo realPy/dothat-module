@@ -26,4 +26,9 @@ lcd_clear();
 lcd_text_line(1,"Some Text");
 lcd_text_line(0,"012345678901234567890");
 
+sleep(1);
+
+lcd_text_lines("First line", "  second", "Line the third");
+
+
 }
