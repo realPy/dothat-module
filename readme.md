@@ -59,12 +59,14 @@ Value: 0 for disable , 1 or enable
 Set the color of one segment or get all color of segment
  
 Get the color status:	
+
 	cat /sys/class/dothat/sn3218/lcd
 	B: 0x00 0x00 0x00 0x00 0x00 0x00
 	G: 0x00 0x00 0x00 0x00 0x00 0x00
 	R: 0x00 0x00 0x00 0x00 0x00 0x00
 	
 Set the color blue to the segment 2
+
 	echo "2 FF0000" > /sys/class/dothat/sn3218/lcd
 
 ####/sys/class/dothat/sn3218/monocolor
@@ -72,6 +74,7 @@ Set the same color for all segment or get all color of segment
 
 	
 Set the color red for all segments
+
 	echo "0000FF" > /sys/class/dothat/sn3218/monocolor
 
 
