@@ -32,16 +32,17 @@ sleep(1);
 st7036_cursor_position(0,0);
 st7036_lcd_buffer("Top Left");
 
-for (i=0 ; i<=255 ; i+=5)
-	{
-	cap1166_graph_bar(i);
-	for (j=0; j<=1000000 ; j++) { };
-	}
-for (i=255 ; i>=0 ; i-=5)
-	{
-	cap1166_graph_bar_reverse(i);
-	for (j=0; j<=1000000 ; j++) { };
-	}
+i=st7036_get_cursor_position();
+printf("ANS = %i\n",i);
 
+st7036_cursor_position(4,1);
+
+i=st7036_get_cursor_position();
+printf("ANS = %i\n",i);
+
+
+char bb[60];
+st7036_get_lcd_buffer(bb, sizeof bb);
+printf(":%s:\n",bb);
 
 }

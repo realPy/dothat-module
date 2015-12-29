@@ -127,3 +127,21 @@ st7036_cursor_position(0,2);
 st7036_lcd_buffer(st);
 
 }
+
+void graph_bar(int d, int p)
+{
+
+int v;
+
+v=(255*p)/100 ;
+
+if (d==0) 
+	{
+	cap1166_graph_bar(v);
+	}
+else
+	{
+	cap1166_graph_bar_reverse(v);
+	}
+}
+

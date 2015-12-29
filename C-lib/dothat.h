@@ -9,3 +9,4 @@ void lcd_cursor_pos(int,int);
 void lcd_text(char *);
 void lcd_text_line(int , char *);
 void lcd_text_lines(char *, char *, char *);
+void graph_bar(int, int);

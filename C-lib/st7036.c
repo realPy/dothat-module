@@ -6,6 +6,7 @@ sn3218 interface
 
 */
 
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -27,6 +28,7 @@ fd=open(f_clear, O_WRONLY | O_APPEND);
 
 if (fd>0) {
 		dprintf(fd,"1");
+	usleep(30000);
 	close(fd);
 	};
 }
@@ -86,6 +88,27 @@ if (fd>0) {
 	};
 }
 
+int st7036_get_cursor_position(void)
+{
+int fd;
+char str[20];
+int c,r,a;
+
+a=0;
+fd=open(f_cursor_position, O_RDONLY );
+
+if (fd>0) {
+	read(fd,str,20);
+	/*printf("%s\n",str);	 */
+	close(fd);
+	sscanf(str,"C:%i R:%i",&r, &c);
+	/* printf("%i - %i\n",r,c); */
+	a=(r*16)+c;
+	};
+return a;
+
+}
+
 void st7036_lcd_buffer(char *string)
 {
 int fd;
@@ -96,6 +119,27 @@ if (fd>0) {
 	dprintf(fd,"%s",string);
 	close(fd);
 	};
+}
+
+char * st7036_get_lcd_buffer(char *lcd_buffer, int i)
+{
+int fd;
+int n;
+char s1[60],s2[60];
+fd=open(f_lcd_buffer, O_RDONLY);
+
+if (fd>0) {
+	n=read(fd,s1,sizeof s1 );
+	close(fd);
+/*	printf("%i:%s:\n",n,s1); */
+	};
+
+sprintf(s2,"%.16s\n%.16s\n%.16s",s1,s1+16,s1+32);
+
+strncpy(lcd_buffer,s2,(size_t) i);
+/* printf(":%s:\n",lcd_buffer); */
+
+return lcd_buffer;
 }
 
 void st7036_shift_display(char shft)
