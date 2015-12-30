@@ -83,6 +83,15 @@ Displays the string on the specified line starting at character 0.
 
 The string is truncated at character 16 so that no wrapping occurs.
 
+## lcd_text_lines
+
+Displays the three strings on the three  lines
+
+	void lcd_text_lines(char *s1, char *s2, char *s3)
+
+The display is cleared before writing the strings and each string us 
+truncated at character 16.
+
 ## graph_bar
 
 Uses the six LEDs as a bar graph
@@ -112,10 +121,7 @@ The actual brightness of the LEDs is determined by the 'polarity' and
 	0	1		on at 100-min level
 	1	1		on at 100-max level
 
-## led_state
-## led_polarity
-## led_get_state
-## led_get_polarity
+## led_state, led_polarity, led_get_state, led_get_polarity
 
 These routines set and get the status of individual LEDs.
 
