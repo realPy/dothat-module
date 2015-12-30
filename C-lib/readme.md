@@ -83,4 +83,31 @@ Displays the string on the specified line starting at character 0.
 
 The string is truncated at character 16 so that no wrapping occurs.
 
+## graph_bar
 
+Uses the six LEDs as a bar graph
+
+	void graph_bar(int d, int p)
+
+Variable 'p' is the percentage of the bar illuminated, 'd' gives the 
+direction: d=0 bar starts at the top and grows down, else bar starts
+at bottom and grows up.
+
+## led_intensity
+
+Sets the intensity of the six LEDs
+
+	void led_intensity(int l, int h)
+
+This sets the low ('l') and high ('h') intensity of the LEDs. Only the
+low 4 bits of each value is used and the percentage intensity is a 
+non-linear scale from 0-77% for the low value and 7-100% for the high.
+The actual brightness of the LEDs is determined by the 'polarity' and 
+'enabled' stated of each LED. 
+
+	LED	Polarity	Appearance
+
+	0	0		on at min level
+	1	0		on at max level
+	0	1		on at 100-min level
+	1	1		on at 100-max level

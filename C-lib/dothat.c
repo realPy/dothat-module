@@ -145,3 +145,13 @@ else
 	}
 }
 
+void led_intensity(int l, int h)
+{
+
+unsigned int v;
+
+v=((h & 0xff)<<4)+(l & 0xff);
+
+cap_luminosity(v);
+
+}
