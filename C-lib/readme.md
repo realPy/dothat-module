@@ -111,3 +111,21 @@ The actual brightness of the LEDs is determined by the 'polarity' and
 	1	0		on at max level
 	0	1		on at 100-min level
 	1	1		on at 100-max level
+
+## led_state
+## led_polarity
+## led_get_state
+## led_get_polarity
+
+These routines set and get the status of individual LEDs.
+
+	void led_state(int i, int s)
+	void led_polarity(int i, int s)
+	int led_get_state(int i)
+	int led_get_polarity(int i)
+
+In all these 'i' is the LED (0 <= i <= 5) and 's' sets the state (s=0|1).
+The get routines return 0 or 1 refelcting the state set for the particular
+LED. See above for the interaction between the state and polarity values.
+
+
