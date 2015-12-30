@@ -45,4 +45,14 @@ char bb[60];
 st7036_get_lcd_buffer(bb, sizeof bb);
 printf(":%s:\n",bb);
 
+i=cap1166_get_leds();
+printf("%i\n",i);
+cap1166_leds(0);
+i=cap1166_get_leds();
+printf("%i\n",i);
+cap1166_leds(21);
+i=cap1166_get_leds();
+printf("%i\n",i);
+
+
 }

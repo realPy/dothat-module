@@ -79,6 +79,25 @@ if (fd>0) {
 	};
 }
 
+unsigned int cap1166_get_leds(void)
+{
+int fd;
+unsigned int v;
+char s[20];
+
+v=0;
+
+fd=open(f_leds, O_RDONLY); 
+
+if (fd>0) {
+		read(fd,s, sizeof s);
+	close(fd);
+	sscanf(s,"%i",&v);
+	};
+
+return v;
+}
+
 void cap1166_polarity(unsigned int leds)
 {
 int fd;
@@ -86,9 +105,29 @@ int fd;
 fd=open(f_polarity, O_WRONLY | O_APPEND); 
 
 if (fd>0) {
-		dprintf(fd,"%u",leds);
+	dprintf(fd,"%u",leds);
 	close(fd);
 	};
+}
+
+unsigned int cap1166_get_polarity(void)
+{
+int fd;
+unsigned int v;
+char s[20];
+int n;
+
+v=0;
+
+fd=open(f_polarity, O_RDONLY); 
+
+if (fd>0) {
+	n=read(fd,s, sizeof s);
+	close(fd);
+	sscanf(s,"%i",&v);
+	};
+
+return v;
 }
 
 void cap1166_luminosity(unsigned int level)

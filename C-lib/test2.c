@@ -9,35 +9,37 @@ int main()
 {
 
 int LED[5][2];
-int i,j;
+int i,j,l,p;
 backlight_rgb(128,128,128);
 
 lcd_clear();
 
 lcd_cursor(0,0);
 
-lcd_cursor_pos(0,0);
-lcd_text("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz");
 
-sleep(1);
-backlight_rgb(128,0,128);
+cap1166_leds(0);
 
-lcd_clear();
+for (i=0 ; i<=5 ; i++)
+{
+led_state(i,1);
+}
 
-lcd_text_line(1,"Some Text");
-lcd_text_line(0,"012345678901234567890");
+for (i=0 ; i<=5 ; i++)
+{
+led_state(i,0);
+}
 
-sleep(1);
+cap1166_polarity(3);
+cap1166_leds(21);
 
-backlight_rgb(0,128,128);
+led_intensity(0,1);
 
-lcd_text_lines("First line", "  second", "Line the third");
-
-sleep(1);
-
-graph_bar(0,25);
-sleep(1);
-graph_bar(1,25);
+for (i=0 ; i<=5 ; i++)
+{
+l=led_get_state(i);
+p=led_get_polarity(i);
+printf("LED %i : State - %i ; Polarity = %i\n",i,l,p);
+}
 
 
 }

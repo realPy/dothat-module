@@ -11,3 +11,7 @@ void lcd_text_line(int , char *);
 void lcd_text_lines(char *, char *, char *);
 void graph_bar(int, int);
 void led_intensity(int, int);
+void led_state(int, int);
+void led_polarity(int, int);
+int led_get_state(int);
+int led_get_polarity(int);

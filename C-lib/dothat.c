@@ -152,6 +152,62 @@ unsigned int v;
 
 v=((h & 0xff)<<4)+(l & 0xff);
 
-cap_luminosity(v);
+cap1166_luminosity(v);
 
+}
+
+void led_state(int i, int s)
+{
+unsigned int l,j;
+
+l=cap1166_get_leds();
+
+if (s==0)
+	{
+	l &= ~(1<<(i));
+	}
+  else
+	{
+	l |= (1<<(i));
+	};
+cap1166_leds(l);
+}
+
+void led_polarity(int i, int s)
+{
+unsigned int l,j;
+
+l=cap1166_get_polarity();
+
+if (s==0)
+	{
+	l &= ~(1<<(i));
+	}
+  else
+	{
+	l |= (1<<(i));
+	};
+cap1166_polarity(l);
+}
+
+int led_get_state(int i)
+{
+unsigned int l;
+
+l=cap1166_get_leds();
+
+l &= (1<<i);
+
+if (l==0) { return 0 ; } else {return 1 ; };
+}
+
+int led_get_polarity(int i)
+{
+unsigned int l;
+
+l=cap1166_get_polarity();
+
+l &= (1<<i);
+
+if (l==0) { return 0 ; } else {return 1 ; };
 }
