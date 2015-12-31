@@ -134,4 +134,12 @@ In all these 'i' is the LED (0 <= i <= 5) and 's' sets the state (s=0|1).
 The get routines return 0 or 1 refelcting the state set for the particular
 LED. See above for the interaction between the state and polarity values.
 
+## led_states, led_polarities
+
+Sets the status of all LEDs 
+
+	void led_states(int s0, int s1, int s2, int s3, int s4, int s5)
+	void led_polarities(int s0, int s1, int s2, int s3, int s4, int s5)
+
+'s0' to 's5' are the individual LEDs
 

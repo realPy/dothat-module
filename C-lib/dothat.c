@@ -173,6 +173,37 @@ if (s==0)
 cap1166_leds(l);
 }
 
+void led_states(int s0, int s1, int s2, int s3, int s4, int s5)
+{
+unsigned int l;
+
+
+l= s0 & 0x01 ;
+l |= (s1 & 0x01)<<1;
+l |= (s2 & 0x01)<<2;
+l |= (s3 & 0x01)<<3;
+l |= (s4 & 0x01)<<4;
+l |= (s5 & 0x01)<<5;
+
+cap1166_leds(l);
+}
+
+void led_polarities(int s0, int s1, int s2, int s3, int s4, int s5)
+{
+unsigned int l;
+
+
+l= s0 & 0x01 ;
+l |= (s1 & 0x01)<<1;
+l |= (s2 & 0x01)<<2;
+l |= (s3 & 0x01)<<3;
+l |= (s4 & 0x01)<<4;
+l |= (s5 & 0x01)<<5;
+
+cap1166_polarity(l);
+}
+
+
 void led_polarity(int i, int s)
 {
 unsigned int l,j;

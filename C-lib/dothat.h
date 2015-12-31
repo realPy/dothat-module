@@ -15,3 +15,5 @@ void led_state(int, int);
 void led_polarity(int, int);
 int led_get_state(int);
 int led_get_polarity(int);
+void led_states(int, int, int, int, int, int);
+void led_polarities(int, int, int, int, int, int);

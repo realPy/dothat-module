@@ -10,7 +10,7 @@ int main()
 
 int LED[5][2];
 int i,j,l,p;
-backlight_rgb(128,128,128);
+backlight_rgb(128,0,0);
 
 lcd_clear();
 
@@ -40,6 +40,11 @@ l=led_get_state(i);
 p=led_get_polarity(i);
 printf("LED %i : State - %i ; Polarity = %i\n",i,l,p);
 }
+
+sleep(1);
+
+led_polarities(0,0,0,0,0,0);
+led_states(0,0,0,0,0,1);
 
 
 }
