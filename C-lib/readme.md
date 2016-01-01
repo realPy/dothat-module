@@ -143,3 +143,36 @@ Sets the status of all LEDs
 
 's0' to 's5' are the individual LEDs
 
+## led_breathe
+
+Set a specific LED to breathe (i.e. flash with ramp on / ramp off)
+
+	void led_breathe(int i, int p)
+
+'i' is the LED (0 <= i <= 5) and 'p' is the breathe rate in ms. A
+breathe rate of '0' will stop the LED from flashing.
+
+## led_breathe_rate
+
+Sets the breathe rate for LEDs for next time an LED is set to blink (if
+no other rate set as part of led_breathe routine).
+
+	void led_breathe_rate(int p)
+
+## led_breathes
+
+Sets the breathe status of all leds
+
+	void led_breathes(int s0, int s1, int s2, int s3, int s4, int s5)
+
+'s0' to 's5' are the individual LEDs, a '0' turns the LED off, anything
+else will set the LED breathing at the rate determined by last call
+to led_breathe_rate
+
+## Note on LEDs
+
+Setting LEDs on/off at a specific intensity and setting the LEDS breathing
+are mutually exclusive across all the LEDs. i.e. You can't set a single 
+LED on and have another one blinking - all LEDs are controlled by the
+polarity/state routines OR by the breathe routines.
+
