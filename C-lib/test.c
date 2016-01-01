@@ -3,56 +3,59 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "sn3218.h"
-#include "st7036.h"
-#include "cap1166.h"
+#include "dothat.h"
 
 int main()
 {
 
-unsigned char red[6],green[6],blue[6];
-int i,j;
+int LED[5][2];
+int i,j,l,p;
+backlight_rgb(128,0,0);
 
-sn3218_enable(1);
-sn3218_monocolor("a0a0a0");
+lcd_clear();
 
-st7036_clear();
-
-sleep(1);
-
-st7036_cursor_on(1);
-st7036_cursor_blink(1);
-
-st7036_contrast(40);
-
-st7036_cursor_position(4,1);
-st7036_lcd_buffer("Hello World");
-
-sleep(1);
-st7036_cursor_position(0,0);
-st7036_lcd_buffer("Top Left");
-
-i=st7036_get_cursor_position();
-printf("ANS = %i\n",i);
-
-st7036_cursor_position(4,1);
-
-i=st7036_get_cursor_position();
-printf("ANS = %i\n",i);
+lcd_cursor(0,0);
 
 
-char bb[60];
-st7036_get_lcd_buffer(bb, sizeof bb);
-printf(":%s:\n",bb);
-
-i=cap1166_get_leds();
-printf("%i\n",i);
 cap1166_leds(0);
-i=cap1166_get_leds();
-printf("%i\n",i);
+
+for (i=0 ; i<=5 ; i++)
+{
+led_state(i,1);
+}
+
+for (i=0 ; i<=5 ; i++)
+{
+led_state(i,0);
+}
+
+cap1166_polarity(3);
 cap1166_leds(21);
-i=cap1166_get_leds();
-printf("%i\n",i);
+
+led_intensity(0,1);
+
+for (i=0 ; i<=5 ; i++)
+{
+l=led_get_state(i);
+p=led_get_polarity(i);
+printf("LED %i : State - %i ; Polarity = %i\n",i,l,p);
+}
+
+sleep(1);
+
+led_polarities(0,0,0,0,0,0);
+led_states(0,0,0,0,0,1);
+
+led_breathe(1,500);
+sleep(1);
+led_breathe(2,1000);
+sleep(1);
+led_breathe(3,100);
+sleep(2);
+led_breathe(2,0);
+sleep(1);
+led_breathe_rate(4000);
+led_breathes(1,0,1,0,1,0);
 
 
 }
