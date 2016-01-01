@@ -17,3 +17,6 @@ int led_get_state(int);
 int led_get_polarity(int);
 void led_states(int, int, int, int, int, int);
 void led_polarities(int, int, int, int, int, int);
+void led_breathe(int, int);
+void led_breathes(int, int, int, int, int, int);
+void led_breathe_rate(int);

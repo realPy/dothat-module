@@ -31,6 +31,27 @@ if (fd>0) {
 	};
 }
 
+unsigned int cap1166_get_blink(void)
+{
+int fd;
+unsigned int v;
+char s[20];
+int n;
+
+v=0;
+
+fd=open(f_blink, O_RDONLY); 
+
+if (fd>0) {
+	n=read(fd,s, sizeof s);
+	close(fd);
+	sscanf(s,"%i",&v);
+	};
+
+return v;
+}
+
+
 void cap1166_blink_rate(unsigned int rate)
 {
 int fd;
@@ -41,6 +62,26 @@ if (fd>0) {
 		dprintf(fd,"%u",rate);
 	close(fd);
 	};
+}
+
+unsigned int cap1166_get_blink_rate(void)
+{
+int fd;
+unsigned int v;
+char s[20];
+int n;
+
+v=0;
+
+fd=open(f_blink_rate, O_RDONLY); 
+
+if (fd>0) {
+	n=read(fd,s, sizeof s);
+	close(fd);
+	sscanf(s,"%i",&v);
+	};
+
+return v;
 }
 
 void cap1166_graph_bar(unsigned int level)

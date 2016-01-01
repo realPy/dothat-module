@@ -46,5 +46,16 @@ sleep(1);
 led_polarities(0,0,0,0,0,0);
 led_states(0,0,0,0,0,1);
 
+led_breathe(1,500);
+sleep(1);
+led_breathe(2,1000);
+sleep(1);
+led_breathe(3,100);
+sleep(2);
+led_breathe(2,0);
+sleep(1);
+led_breathe_rate(4000);
+led_breathes(1,0,1,0,1,0);
+
 
 }

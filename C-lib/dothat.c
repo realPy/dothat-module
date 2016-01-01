@@ -242,3 +242,43 @@ l &= (1<<i);
 
 if (l==0) { return 0 ; } else {return 1 ; };
 }
+
+void led_breathe(int i, int p)
+{
+unsigned int l;
+
+l=cap1166_get_blink();
+
+if (p==0)
+        {
+        l &= ~(1<<(i));
+        }
+  else
+        {
+        l |= (1<<(i));
+        };
+
+cap1166_blink_rate(p);
+cap1166_blink(l);
+}
+
+void led_breathe_rate(int p)
+{
+cap1166_blink_rate(p);
+}
+
+void led_breathes(int s0, int s1, int s2, int s3, int s4, int s5)
+{
+unsigned int l;
+
+
+l= s0 & 0x01 ;
+l |= (s1 & 0x01)<<1;
+l |= (s2 & 0x01)<<2;
+l |= (s3 & 0x01)<<3;
+l |= (s4 & 0x01)<<4;
+l |= (s5 & 0x01)<<5;
+
+cap1166_blink(l);
+}
+
