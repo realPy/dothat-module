@@ -45,7 +45,7 @@ void backlight_led_rgb(int LED, int R, int G, int B)
 char v[10];
 int red, green, blue, led;
 
-led = LED % 5;
+led = LED % 6;
 red=R % 256;
 green=G % 256;
 blue = B % 256;
