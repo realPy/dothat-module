@@ -9,6 +9,8 @@
 #include <time.h>
 #include <math.h>
 
+#define NET_INTERFACE "tun0"
+
 #define YELLOW "00FFFF"
 #define BLUE "FF0000"
 #define RED "0000FF"
@@ -444,8 +446,8 @@ int main(void)
 	memcpy(&tvOld,&tvNow,sizeof(struct timeval));
 	memcpy(&tvScreen,&tvNow,sizeof(struct timeval));
 	
-	bytesTx=getTxBytesForInterface("tun0");
-	bytesRx=getRxBytesForInterface("tun0");
+	bytesTx=getTxBytesForInterface(NET_INTERFACE);
+	bytesRx=getRxBytesForInterface(NET_INTERFACE);
 	memcpy(&tvSpeed,&tvNow,sizeof(struct timeval));
 	
     while (1) {
@@ -497,8 +499,8 @@ int main(void)
 		msElapsedSpeed=tvNow.tv_sec*1000+((float)tvNow.tv_usec/1000);//elapsed time in ms
 			
 	    if(msElapsedSpeed>1000) {
-	    	totalTx=getTxBytesForInterface("tun0");
-			totalRx=getRxBytesForInterface("tun0");
+	    	totalTx=getTxBytesForInterface(NET_INTERFACE);
+			totalRx=getRxBytesForInterface(NET_INTERFACE);
 			
 			speedTx=(float)(((totalTx-bytesTx)*1000)/msElapsedSpeed);
 			speedRx=(float)(((totalRx-bytesRx)*1000)/msElapsedSpeed);
