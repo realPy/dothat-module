@@ -59,12 +59,14 @@ Value: 0 for disable , 1 or enable
 Set the color of one segment or get all color of segment
  
 Get the color status:	
+
 	cat /sys/class/dothat/sn3218/lcd
-    B: 0x00 0x00 0x00 0x00 0x00 0x00
-    G: 0x00 0x00 0x00 0x00 0x00 0x00
-    R: 0x00 0x00 0x00 0x00 0x00 0x00
+	B: 0x00 0x00 0x00 0x00 0x00 0x00
+	G: 0x00 0x00 0x00 0x00 0x00 0x00
+	R: 0x00 0x00 0x00 0x00 0x00 0x00
 	
 Set the color blue to the segment 2
+
 	echo "2 FF0000" > /sys/class/dothat/sn3218/lcd
 
 ####/sys/class/dothat/sn3218/monocolor
@@ -72,6 +74,7 @@ Set the same color for all segment or get all color of segment
 
 	
 Set the color red for all segments
+
 	echo "0000FF" > /sys/class/dothat/sn3218/monocolor
 
 
@@ -135,7 +138,7 @@ Shift the display with the correspondant value:
 ####/sys/class/dothat/cap1166/blink
 
 Blink the led at the blink_rate value. The leds is coded in one byte. Each leds is coded with a bit value.
-[LED 6 | LED 5 | LED 4 | LED 3 | LED 2 | LED 1  ]
+	[LED 6 | LED 5 | LED 4 | LED 3 | LED 2 | LED 1  ]
 
 To blink 5 / 3 / 1  its 010101 binary. In decimal the convert value is 21
 
@@ -160,7 +163,7 @@ Same as graph_bar except that the light value go from the bottom to the top
 	
 ####/sys/class/dothat/cap1166/leds
 Enable the leds. The leds is coded in one byte. Each leds is coded with a bit value.
-[LED 6 | LED 5 | LED 4 | LED 3 | LED 2 | LED 1  ]
+	[LED 6 | LED 5 | LED 4 | LED 3 | LED 2 | LED 1  ]
 
 Enable leds light not mean that is light always on. If polarity is disable the led is light. If polarity is enable , enable the led light off the leds and disable light on.
  
