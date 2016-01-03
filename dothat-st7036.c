@@ -134,6 +134,36 @@ st7036_write_command(device,(0b01110000 | (contrast & 0x0F)), 1);
 
 }
 
+
+
+void reset_shift_register(struct spi_device *device)
+{
+	struct pst7036 *pData=NULL;
+	int i=0;
+	
+	pData=spi_get_clientdata(device);
+	
+	if(pData) {
+
+
+		if(pData->shift_register) {
+			if(pData->shift_register>7) {
+				while(pData->shift_register) {
+					st7036__shift_right(device);
+				}
+		
+			}else {
+				while(pData->shift_register) {
+					st7036__shift_left(device);
+				}
+		
+			}
+			
+		}
+	}
+	
+}
+
 int st7036_clear_screen(struct spi_device *device)
 {
 	int result=0;
@@ -147,6 +177,9 @@ int st7036_clear_screen(struct spi_device *device)
 		pData->shift_register=0;
 	}
 	udelay(1100);//wait 1.1ms
+	//reset shift register
+	reset_shift_register(device);
+	
 	
 	return 0;
 }
