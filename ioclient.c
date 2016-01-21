@@ -24,6 +24,9 @@
 #define TEAL "808000"
 #define NOCOLOR "000000"
 
+
+#define OFFSET_KEYBOARD 300
+
 static const char *const evval[3] = {
     "RELEASED",
     "PRESSED",
@@ -556,39 +559,39 @@ int main(void)
 		  	printf("%s 0x%04x (%d)\n", evval[ev.value], (int)ev.code, (int)ev.code);
 			
 			
-			if(ev.code==KEY_ENTER&&ev.value==1) {
+			if(ev.code==(OFFSET_KEYBOARD+KEY_ENTER)&&ev.value==1) {
 			
 			
 				set_monocolor(screenMonocolor,RED);
 			}
 		
-			if(ev.code==KEY_BACK&&ev.value==1) {
+			if(ev.code==(OFFSET_KEYBOARD+KEY_BACK)&&ev.value==1) {
 			
 			
 				set_monocolor(screenMonocolor,BLUE);
 			}
 		
-			if(ev.code==KEY_UP&&ev.value==1) {
+			if(ev.code==(OFFSET_KEYBOARD+KEY_UP)&&ev.value==1) {
 			
 			
 				set_monocolor(screenMonocolor,SILVER);
 			}
 		
-			if(ev.code==KEY_DOWN&&ev.value==1) {
+			if(ev.code==(OFFSET_KEYBOARD+KEY_DOWN)&&ev.value==1) {
 			
 			
 				set_monocolor(screenMonocolor,AQUA);
 			}
 		
 		
-			if(ev.code==KEY_LEFT&&ev.value==1) {
+			if(ev.code==(OFFSET_KEYBOARD+KEY_LEFT)&&ev.value==1) {
 			
 			
 				set_monocolor(screenMonocolor,GREEN);
 			}
 	
 			
-            if(ev.code==KEY_RIGHT&&ev.value==1) {
+            if(ev.code==(OFFSET_KEYBOARD+KEY_RIGHT)&&ev.value==1) {
 
 			   
                set_monocolor(screenMonocolor,YELLOW);

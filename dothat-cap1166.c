@@ -113,22 +113,22 @@ void send_ev_for_button(u8 button,CAP1166_STATE state,struct pcap1166 * data) {
 	
 	switch(button) {
 		case 0:
-			key=KEY_BACK;
+			key=OFFSET_KEYBOARD+KEY_BACK;
 		break;
 		case 1:
-			key=KEY_UP;
+			key=OFFSET_KEYBOARD+KEY_UP;
 		break;
 		case 2:
-			key=KEY_DOWN;
+			key=OFFSET_KEYBOARD+KEY_DOWN;
 		break;
 		case 3:
-			key=KEY_LEFT;
+			key=OFFSET_KEYBOARD+KEY_LEFT;
 		break;
 		case 4:
-		   key=KEY_ENTER;
+		   key=OFFSET_KEYBOARD+KEY_ENTER;
 		break;
 		case 5:
-		   key=KEY_RIGHT;
+		   key=OFFSET_KEYBOARD+KEY_RIGHT;
 		break;
 		   
 		
@@ -384,12 +384,12 @@ void cap1166_touch_init(struct pcap1166 *data)
 							
 
 	data->idev->evbit[0] = BIT(EV_KEY);
-	set_bit(KEY_RIGHT, data->idev->keybit);
-	set_bit(KEY_LEFT, data->idev->keybit);
-	set_bit(KEY_UP, data->idev->keybit);
-	set_bit(KEY_DOWN, data->idev->keybit);
-	set_bit(KEY_BACK, data->idev->keybit);
-	set_bit(KEY_ENTER, data->idev->keybit);
+	set_bit(OFFSET_KEYBOARD+KEY_RIGHT, data->idev->keybit);
+	set_bit(OFFSET_KEYBOARD+KEY_LEFT, data->idev->keybit);
+	set_bit(OFFSET_KEYBOARD+KEY_UP, data->idev->keybit);
+	set_bit(OFFSET_KEYBOARD+KEY_DOWN, data->idev->keybit);
+	set_bit(OFFSET_KEYBOARD+KEY_BACK, data->idev->keybit);
+	set_bit(OFFSET_KEYBOARD+KEY_ENTER, data->idev->keybit);
 	
 	cap1166_recalibrate(data);
 	cap1166_enable_inputs(data->client,0b111111);

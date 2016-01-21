@@ -199,6 +199,32 @@ int st7036_set_bias(struct spi_device *device,u8 bias)
 
 
 
+int st7036_data_changed(struct pst7036 *pData,char *string) 
+{
+
+	int ac_buffer=0;
+	unsigned char changed=0;
+	
+	ac_buffer=pData->ac_buffer;
+	
+	while(*string) {
+
+		if(pData) {
+		
+			changed|=(pData->lcd_buffer[ac_buffer]^(*string));
+			ac_buffer++;
+		
+			if(ac_buffer>47)
+				ac_buffer=0;
+		
+		}
+	string++;
+	}
+
+
+	return changed;
+}
+
 
 void st7036_write_string(struct spi_device *device, char *string)
 {
@@ -208,29 +234,41 @@ void st7036_write_string(struct spi_device *device, char *string)
 	udelay(1000);
 	pData=spi_get_clientdata(device);
 	
-	while(*string&&ret>=0) {
-
-	if(pData) {
-		
-		pData->lcd_buffer[pData->ac_buffer]=*string;
-		pData->ac_buffer++;
-		
-		if(pData->ac_buffer>47)
-			pData->ac_buffer=0;
-		
-	}
-	ret = spi_write (device,string,1);
 	
-	if(ret<0) 
-		pr_info("%s write failed\n",__func__);
-
-	;
-	udelay(30);
-
-	string++;
-	}
 	
-	udelay(60);
+	//implement caching system to avoid write same value
+	if(st7036_data_changed(pData,string)) {
+
+		while(*string&&ret>=0) {
+
+		if(pData) {
+		
+			pData->lcd_buffer[pData->ac_buffer]=*string;
+			pData->ac_buffer++;
+		
+			if(pData->ac_buffer>47)
+				pData->ac_buffer=0;
+		
+		}
+	
+	
+	
+		ret = spi_write (device,string,1);
+	
+		if(ret<0) 
+			pr_info("%s write failed\n",__func__);
+
+		;
+		udelay(30);
+
+		string++;
+		}
+	
+		udelay(60);
+		
+    }
+	
+
 }
 
 u8 get_offset_row(u8 double_value,u8 row) 
