@@ -100,7 +100,7 @@ Set the cursor "_" to on or disable it
 	echo 1 > /sys/class/dothat/st7036/cursor_on
 
 For disable:
-	echo 1 > /sys/class/dothat/st7036/cursor_on
+	echo 0 > /sys/class/dothat/st7036/cursor_on
 	
 ####/sys/class/dothat/st7036/cursor_blink
 Blink the cursor
