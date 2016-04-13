@@ -1,0 +1,4 @@
+SUBSYSTEM=="dothat", GROUP="pi", MODE="0660" PROGRAM="/bin/sh -c 'chown -R root:pi /sys/class/dothat'"
+KERNEL=="sn3218", SUBSYSTEM=="dothat", GROUP="pi", MODE="0660" PROGRAM="/bin/sh -c 'chown -R root:pi /sys/class/dothat/sn3218/*'"
+KERNEL=="cap1166", SUBSYSTEM=="dothat", GROUP="pi", MODE="0660" PROGRAM="/bin/sh -c 'chown -R root:pi /sys/class/dothat/cap1166/*'"
+KERNEL=="st7036", SUBSYSTEM=="dothat", GROUP="pi", MODE="0660" PROGRAM="/bin/sh -c 'chown -R root:pi /sys/class/dothat/st7036/*'"
