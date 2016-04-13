@@ -9,7 +9,7 @@
 #include <time.h>
 #include <math.h>
 
-#define NET_INTERFACE "tun0"
+#define NET_INTERFACE "eth0"
 
 #define YELLOW "00FFFF"
 #define BLUE "FF0000"
