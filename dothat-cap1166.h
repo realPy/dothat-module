@@ -63,7 +63,7 @@
 
 #define CAP1166_PRODUCT_ID	0xFD
 
-
+#define OFFSET_KEYBOARD 300
 
 typedef enum  {
         CAP1166_STATE_NONE,

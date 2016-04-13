@@ -15,7 +15,7 @@ The display o tron hat is not just on components but three components togother:
 This 3 components not use the same protocol. The sn3218 and cap1166 use I2C and the st7036 use SPI. The st7036 is also controlled by a GPIO PIN to selected a dedicated register. 
 
 ##Requirements:
-You need the source of your kernel and the spidev need to be disable. The spidev is not compile in module with all kernel provide by Hexxeh with rpi-update. Thanks to the Kernel-tree we are not need to recompiled the kernel. Just copy the nospidev.dtb in your /boot/overlays and add this line in /boot/config.txt:
+You need the source of your kernel and the spidev need to be disable. The spidev is not compile in module with all kernel provide by Hexxeh with rpi-update. Thanks to the Kernel-tree we are not need to recompiled the kernel. Just copy the nospidev.dtbo in your /boot/overlays and add this line in /boot/config.txt:
 
 	dtoverlay=nospidev
 
