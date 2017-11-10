@@ -133,14 +133,14 @@ static ssize_t store_sn3218_lcd_raw_callback(struct device* dev ,struct device_a
     int i;
     u8 b,g,r;
     int cnt;
-	char data[7];
-	
-	memset(data,0,7);
-	
-    struct psn3218 *pData=dev_get_drvdata(dev);
+    char data[7];	
+    struct psn3218 *pData;
+
+    memset(data,0,7);
+    pData=dev_get_drvdata(dev);
 
     if(pData) {
-		pr_info("store raw: %s %d",buf,count);
+		//pr_info("store raw: %s %d",buf,count);
 		//cnt = sscanf(buf, "%02hhx%02hhx%02hhx",&b,&g,&r);
 		//pr_info("info: %d %d %d",b,g,r);
 		if(count>=36) {

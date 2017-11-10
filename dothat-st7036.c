@@ -139,7 +139,6 @@ st7036_write_command(device,(0b01110000 | (contrast & 0x0F)), 1);
 void reset_shift_register(struct spi_device *device)
 {
 	struct pst7036 *pData=NULL;
-	int i=0;
 	
 	pData=spi_get_clientdata(device);
 	
