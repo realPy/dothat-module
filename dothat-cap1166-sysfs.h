@@ -12,7 +12,6 @@
 #ifndef DOTHATCAP1166SYSFS_H
 #define DOTHATCAP1166SYSFS_H
 
-
 #include <linux/kernel.h>
 #include <linux/fs.h> 
 

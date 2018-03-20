@@ -13,9 +13,6 @@
 #ifndef DOTHATGPIO_H
 #define DOTHATGPIO_H	
 
-
-
-
 #define RPI2
 
 #ifdef RPI2
