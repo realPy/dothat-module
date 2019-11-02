@@ -188,7 +188,7 @@ See the C example ioclient.c to handle.
 This example show the Bandwidth of a VPN tun interface in real time.
 
 ### FAQ
-####Why the rainbox effect is in the client code and not directly hardcoded in the driver?
+#### Why the rainbox effect is in the client code and not directly hardcoded in the driver?
 To calculate a rainbow effect we use the HSV color transformation. This require floating point. Linus not recommanded to use floating point in kernel module and I'm agree.
 
 
